@@ -2,6 +2,31 @@ body {
   font-family: 'Optima', 'Arial', 'Helvetica', 'sans-serif';
   background: white;
 }
+#title h1 {
+  font-size:4em; 
+  margin-bottom:0px;
+}
+
+#title h2 {
+  font-size:1.7em; 
+  color: gray;
+  margin-top:0;
+  margin-bottom:0;
+}
+#title h3, #title h4 {
+  margin-top:0;
+  margin-bottom:0;
+}
+
+#introText {
+  max-width:1000px;
+  margin-top: 20px;
+}
+
+#introText p {
+  margin-bottom:15px; 
+  font-size:20px;
+}
 
 a {
   color: gray;
