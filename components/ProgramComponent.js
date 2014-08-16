@@ -22,7 +22,7 @@ var HaskellJSProgram = React.createClass({displayName: 'HaskellJSProgram',
       justComputedId: applyInfo.justComputedId
     });
 
-    this.setState({lines: lines, showHelpText: false});
+    this.setState({lines: lines.slice(-1), showHelpText: false});
   },
 
   highlightApplicationId: function(id) {

@@ -2,7 +2,7 @@ var Lines = React.createClass({displayName: 'Lines',
   render: function() {
     return (
       React.DOM.div({className: "lines"}, [
-        React.addons.CSSTransitionGroup({transitionName: 'lines-animation', key: 'lines-animation'},
+        React.addons.CSSTransitionGroup({transitionName: 'bubble-animation', key: 'bubble-animation'},
           this.props.lines.map((function(line, index) {
             return Line({lineState: {
               ast: line.ast,

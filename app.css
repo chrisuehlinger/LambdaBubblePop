@@ -91,6 +91,36 @@ pre {
   padding: 0 5px;
 }
 
+.application {
+  border: 1px solid white;
+  border-radius: 20em;
+  padding: 2px;
+  display: inline-block;
+  width:auto;
+  background-color: deepskyblue;
+  /*background:-moz-radial-gradient(center 45deg, ellipse closest-corner, rgba(75,190,200,0), rgba(75,190,200,.1), rgba(75,190,200,.3), rgba(255,255,255,.7));
+  background:-webkit-radial-gradient(center center, ellipse cover, rgba(75,190,200,.2), rgba(255,255,255,.5));
+  background:radial-gradient(center 45deg, circle closest-corner, rgba(75,190,200,0), rgba(75,190,200,.1), rgba(75,190,200,.3), rgba(255,255,255,.7));
+  background: -ms-radial-gradient(center, ellipse cover, rgba(255,255,255,0) 0%, rgba(9,133,167,0.1) 51%, rgba(9,133,167,0.3) 71%, rgba(9,133,167,.7) 100%);*/
+}
+
+@-webkit-keyframes bubblePop {
+  0% {-webkit-transform:scale(.9);opacity:1}
+  100% {-webkit-transform:scale(2);opacity:0}
+}
+
+@keyframes bubblePop {
+  0% {-webkit-transform:scale(.9);font-size:8px;opacity:1}
+  100% {-webkit-transform:scale(2);font-size:72px;opacity:0}
+}
+
+.bubble-pop {
+  animation:bubblePop 0.25s  ease-in-out;
+  -webkit-animation:bubblePop 0.25s ease-in-out;
+  -o-animation:bubblePop 0.25s ease-in-out;
+  -moz-animation:bubblePop 0.25s ease-in-out;
+}
+
 .application-applicable:hover {
   background: #fcc;
   cursor: pointer;
@@ -99,6 +129,47 @@ pre {
 .application-highlight-clicked-computation,
 .node-highlight-just-computed {
   background: #fcc;
+}
+
+.bubble-animation-enter {
+  display:inline-block;
+  /*max-width:0;
+  max-height: 0;*/
+  font-size: 0;
+  padding: 0;
+  border-width: 0;
+  transform: scale(0);
+  -webkit-transform: scale(0);
+  transition:  all 0.2s;
+  -webkit-transition:  all 0.2s;
+  transition-delay: 0.25s;
+  -webkit-transition-delay: 0.25s;
+}
+
+.bubble-animation-enter-active {
+  display:inline-block;
+  /*max-height:200px;
+  max-width: 500px;*/
+  font-size: 12px;
+  padding: 2px;
+  border-width: 1px;
+  transform: scale(1);
+  -webkit-transform: scale(1);
+}
+.bubble-animation-leave {
+  opacity: 1;
+  display:inline-block;
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  transition:  all 0.2s;
+  -webkit-transition: all 0.2s;
+}
+
+.bubble-animation-leave-active {
+  opacity: 0;
+  display:inline-block;
+  transform: scale(3);
+  -webkit-transform: scale(3);
 }
 
 .lines-animation-enter {

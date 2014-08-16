@@ -100,8 +100,8 @@ var Line = React.createClass({displayName: 'Line',
         onMouseLeave: this.unhighlight
       },
         React.DOM.div({className: 'line-inner'},
-          [
-            Node({lineState: this.props.lineState, id: this.props.lineState.ast.id, key: 1}),
+          [ React.addons.CSSTransitionGroup({transitionName: 'bubble-animation', key: 'bubble-animation'},
+            Node({lineState: this.props.lineState, id: this.props.lineState.ast.id, key: 1})),
             lineContext,
             lineEditButton,
             lineClearButton

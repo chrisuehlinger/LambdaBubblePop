@@ -53,7 +53,7 @@ var List = React.createClass({displayName: 'List',
         if (i<listItems.length-1) items.push(',');
       }
       items.push(']');
-      return React.DOM.span({className: "list"}, items);
+      return React.DOM.span({className: "list"}, [React.addons.CSSTransitionGroup({transitionName: 'bubble-animation', key: 'bubble-animation'},items)]);
     }
   }
 });

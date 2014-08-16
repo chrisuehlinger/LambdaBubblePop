@@ -39,8 +39,8 @@ var Application = React.createClass({displayName: 'Application',
       funcAndArgs.unshift(FunctionName({lineState: this.props.lineState, id: currentAST.functionName.id, key: currentAST.functionName.id}));
     }
 
-    funcAndArgs.unshift('(');
-    funcAndArgs.push(')');
+    funcAndArgs.unshift('');
+    funcAndArgs.push('');
 
     var className = 'application';
     if (this.isApplicable() && this.currentAST().id === this.props.lineState.applicationHighlightId) {
@@ -58,8 +58,8 @@ var Application = React.createClass({displayName: 'Application',
       onMouseMove: this.highlight,
       onMouseLeave: this.unhighlight,
       key: currentAST.id
-    },
-      funcAndArgs
+    },[React.addons.CSSTransitionGroup({transitionName: 'bubble-animation', key: 'bubble-animation'},
+      funcAndArgs)]
     );
   }
 });
