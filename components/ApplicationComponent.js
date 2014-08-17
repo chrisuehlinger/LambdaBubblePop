@@ -8,6 +8,14 @@ var Application = React.createClass({displayName: 'Application',
     if (this.isApplicable()) {
       this.props.lineState.program.addLineByApplying(this.currentAST().id);
       event.stopPropagation();
+      var poppingSounds = [ 'classic cartoon pop sound 2.wav', 
+                            'object1-1-6.wav', 
+                            'pop.wav', 
+                            'pop1.wav', 
+                            'pop2.wav' ].map(function(path){return 'audio/' + path;});
+      var soundThisTime = new Audio(poppingSounds[Math.floor(Math.random() * poppingSounds.length)]);
+      soundThisTime.play();
+      
     }
   },
   highlight: function(e) {

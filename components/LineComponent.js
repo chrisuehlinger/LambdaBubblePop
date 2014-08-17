@@ -64,9 +64,9 @@ var Line = React.createClass({displayName: 'Line',
       }, '(edit)');
       lineClearButton = React.DOM.span({
         className: 'lines-edit',
-        onClick: this.props.lineState.program.clearProgram,
+        onClick: this.props.lineState.program.resetProgram,
         key: 4
-      }, '(clear)');
+      }, '(reset)');
     }
 
     var errorDiv;
