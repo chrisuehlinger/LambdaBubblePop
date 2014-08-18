@@ -38,20 +38,13 @@ var HaskellJSProgram = React.createClass({displayName: 'HaskellJSProgram',
     this.setState({editingFirstLine: true});
   },
   resetProgram: function(){
-    this.setState(this.getInitialState());
+    var resetState = this.getInitialState();
+    resetState.isMuted = this.state.isMuted;
+    this.setState(resetState);
   },
   toggleMute: function(){
     this.setState({isMuted:!this.state.isMuted});
   },
-  /*clearProgram: function() {
-    this.setState({
-      lines: [this.state.lines[0]],
-      applicationHighlightId: null,
-      highlightedLineIndex: null,
-      editingFirstLine: false,
-      showHelpText: false
-    });
-  },*/
 
   updateInitialAST: function(id, subtree) {
     var newAST = ASTTransformations.replaceSubtree(this.state.lines[0].ast, id, subtree);
