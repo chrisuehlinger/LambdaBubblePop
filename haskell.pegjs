@@ -1,3 +1,4 @@
+
 {
   function randomId() { return (window.uuid ? uuid.v4() : 'placeholder'); }
 }
@@ -21,18 +22,18 @@ functionDefinition
 }}; }
 
 functionDefinitionTypeSignature
-  = whitespace "::" whitespace typesig:[ \(\)\[\]A-Za-z>-]+ { return typesig.join(""); }
+  = whitespace "::" whitespace typesig:typeSignatureTypeList { return typesig; }
 
 typeSignatureTypeList
-  = type:typeSignatureType nextType:arrow_typeSignatureType? {return [type].concat(nextType);}
+  = type:typeSignatureType nextType:arrow_typeSignatureType? {return [type].concat(nextType || []);}
 
 arrow_typeSignatureType
-  = whitespace "->" whitespace type:typeSignatureType nextType:arrow_typeSignatureType {return [type].concat(nextType);}
+  = whitespace "->" whitespace type:typeSignatureType nextType:arrow_typeSignatureType? {return [type].concat(nextType || []);}
 
 typeSignatureType
   = "[" type:[A-Za-z]+ "]" {return {typeConstructor:"List", type:type.join("")};}
   / "(" application:typeSignatureTypeList ")" { return {typeConstructor:"App", type:application};}
-  / type:[A-Za-z]+  {return {typeConstructor:undefined, type:type.join("")};}
+  / type:[A-Za-z]+  {return {typeConstructor:null, type:type.join("")};}
 
 functionDefinitionPatternLine
   = whitespace_newline functionName part:functionDefinitionPatternPartOfLine { return part; }
