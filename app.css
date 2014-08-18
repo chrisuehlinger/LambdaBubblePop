@@ -3,11 +3,20 @@
 body {
   font-family: 'Optima', 'Arial', 'Helvetica', 'sans-serif';
   background: white;
+  margin: 0;
 }
+
+#title {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
 #title h1 {
   font-family:'Audiowide', 'Optima', 'Helvetica', 'Arial', 'sans-serif';
   font-size:4em; 
+  margin-top: 15px;
   margin-bottom:0px;
+  
 }
 
 .titleBubble {
@@ -40,7 +49,8 @@ body {
 }
 
 #introText {
-  max-width:1000px;
+  max-width: 700px;
+  margin: 0 auto;
   margin-top: 20px;
 }
 
@@ -89,33 +99,61 @@ pre {
 .lines {
   font-family: monospace;
   font-size:20px;
-  padding: 1em;
-  margin: 5em;
-  /*box-shadow: 0 0 1.5px #777;*/
+  padding-bottom: 1em;
   margin: 1em 0;
-
-  min-height: 220px;
+  border: 1px solid;
+  border-right: none;
+  border-left: none;
+  text-align: center;
+  min-height: 100px;
 }
 
-#mapLines .lines {
-  border: 1px solid rgb(253, 46, 46);
+#mapLines .lines, 
+#mapLines .lines-edit, 
+#mapLines .line-editing-container {
+  border-color: rgb(253, 46, 46);
 }
 
-#foldrLines .lines {
-  border: 1px solid rgb(255, 100, 224);
+#foldrLines .lines, 
+#foldrLines .lines-edit,
+#foldrLines .line-editing-container {
+  border-color: rgb(255, 100, 224);
 }
 
-#foldlLines .lines{
-  border: 1px solid green;
+#foldlLines .lines, 
+#foldlLines .lines-edit,
+#foldlLines .line-editing-container {
+  border-color: green;
+}
+
+.lines-edit-options {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.lines-edit-options .lines-edit:first-child{
+  border-radius: 0 0 0 10px;
+}
+
+.lines-edit-options .lines-edit:last-child {
+  border-radius: 0 0 10px 0;
+  border-right: 1px solid;
 }
 
 .lines-edit {
+  display: inline-block;
   font-size: 1em;
   color: #777;
-  margin-left: 1em;
   cursor: pointer;
-  text-decoration: underline;
+  border-left: 1px solid;
+  border-bottom: 1px solid;
+  border-top: none;
+  padding: 4px;
+  
 }
+
+
 
 .line.span {
   font-size: 23px;
@@ -125,7 +163,6 @@ pre {
   background: #fee;
 }
 .line-inner {
-  position: relative;
 }
 .line-context {
   font-size: 1em;
@@ -170,23 +207,19 @@ pre {
 
 .bubble-animation-enter {
   display:inline-block;
-  /*max-width:0;
-  max-height: 0;*/
   font-size: 0;
   padding: 0;
   border-width: 0;
   transform: scale(0);
   -webkit-transform: scale(0);
-  transition:  all 0.2s;
-  -webkit-transition:  all 0.2s;
+  transition:  all 0.3s;
+  -webkit-transition:  all 0.3s;
   transition-delay: 0.25s;
   -webkit-transition-delay: 0.25s;
 }
 
 .bubble-animation-enter-active {
   display:inline-block;
-  /*max-height:200px;
-  max-width: 500px;*/
   font-size: 1em;
   padding: 5px;
   border-width: 1px;
@@ -205,40 +238,24 @@ pre {
 .bubble-animation-leave-active {
   opacity: 0;
   display:inline-block;
-  transform: scale(3);
-  -webkit-transform: scale(3);
-}
-
-.lines-animation-enter {
-  opacity: 0;
-  transform: translateY(-100%);
-  -webkit-transform: translateY(-100%);
-  -moz-transform: none;
-  transition: opacity 0.3s, transform 0.15s;
-  -webkit-transition: opacity 0.3s, -webkit-transform 0.15s;
-  -moz-transition: opacity 0.3s;
-}
-.lines-animation-enter-active {
-  opacity: 1;
-  transform: translateY(0);
-  -webkit-transform: translateY(0);
-  -moz-transform: none;
-}
-.lines-animation-leave {
-  transition: opacity 0.1s, transform 0.3s;
-  -webkit-transition: opacity 0.1s, -webkit-transform 0.3s;
-  -moz-transition: opacity 0.1s;
-}
-.lines-animation-leave-active {
-  opacity: 0;
-  transform: translateY(200%);
-  -webkit-transform: translateY(200%);
-  -moz-transform: none;
+  transform: scale(2);
+  -webkit-transform: scale(2);
 }
 
 .line-editing-container {
-  position: relative;
+  width: 50%;
+  border: 1px solid;
+  border-radius: 10px;
+  padding: 5px;
+  margin: 30px auto 0;
+  vertical-align: middle;
 }
+
+.line-edit-input {
+  width: 100%;
+  text-align:center;
+}
+
 .line-editing-error {
   position: absolute;
   top: 1.5em;
@@ -265,12 +282,25 @@ input.input-error {
   text-align: center;
 }
 
+#function-editor {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+#function-editor::before {
+  content:"";
+  background: dodgerblue;
+  display:block;
+  margin: 0 auto;
+  height: 40px;
+  width: 100px;
+}
+
 .function-editor-container {
-  position: fixed;
-  width: 23%;
-  right: 10px;
-  top: 0;
-  bottom: 10px;
+  padding: 10px 20px 20px;
+  border: 2px solid pink;
+  border-radius: 40px;
+  background: pink;
 }
 
 .function-editor-link {
@@ -290,22 +320,19 @@ input.input-error {
 }
 
 .function-editor-top {
-  position: absolute;
-  top: 5px;
-  left: 0;
+  font-family:'Audiowide', 'Optima', 'Helvetica', 'Arial', 'sans-serif';
+  text-align: center;
 }
 
 .function-editor {
   box-shadow: 0 0 1.5px #777;
-  position: absolute;
-  top: 30px;
-  left: 0;
-  width: 100%;
-  bottom: 0;
   font: 1em monospace;
   border: 1px solid #ccc;
+  width: 100%;
+  min-height:500px;
   padding: 10px;
   white-space: nowrap;
+  resize:none;
 }
 
 .function-editor:focus {

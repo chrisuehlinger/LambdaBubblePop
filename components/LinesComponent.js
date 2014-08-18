@@ -2,7 +2,6 @@ var Lines = React.createClass({displayName: 'Lines',
   render: function() {
     return (
       React.DOM.div({className: "lines"}, [
-        React.addons.CSSTransitionGroup({transitionName: 'bubble-animation', key: 'bubble-animation'},
           this.props.lines.map((function(line, index) {
             return Line({lineState: {
               ast: line.ast,
@@ -16,8 +15,6 @@ var Lines = React.createClass({displayName: 'Lines',
               program: this.props.program
             }, key: index});
           }).bind(this))
-        ),
-        (this.props.showHelpText ? React.DOM.div({className: 'help-text', key: 'help-text'}, "\u2191 click to expand execution") : undefined)
       ])
     );
   }

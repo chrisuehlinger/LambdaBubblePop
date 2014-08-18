@@ -27,7 +27,14 @@ var FunctionEditor = React.createClass({displayName: 'FunctionEditor',
       }
 
       return React.DOM.div({className: 'function-editor-container'}, [
-        React.DOM.textarea({
+        React.DOM.div({
+          className: "function-editor-top",
+          key: 2
+        }, [
+             React.DOM.span({className: "function-editor-title function-editor-title-big", key: 1}, 'Bubble Mix'),
+             // React.DOM.span({className: "function-editor-link", onClick: this.onClick}, '(close)')
+           ]
+        ),React.DOM.textarea({
           spellCheck: 'false',
           className: "function-editor" + (this.state.error ? ' function-editor-error' : ''),
           value: this.state.functionDefinitions,
@@ -37,14 +44,6 @@ var FunctionEditor = React.createClass({displayName: 'FunctionEditor',
           key: 1,
           ref: 'textarea'
         }),
-        React.DOM.div({
-          className: "function-editor-top",
-          key: 2
-        }, [
-             React.DOM.span({className: "function-editor-title function-editor-title-big", key: 1}, 'Function Editor'),
-             // React.DOM.span({className: "function-editor-link", onClick: this.onClick}, '(close)')
-           ]
-        ),
         errorDiv
       ]);
     } else {
@@ -52,7 +51,7 @@ var FunctionEditor = React.createClass({displayName: 'FunctionEditor',
         React.DOM.div({
           className: "function-editor-top",
         }, [
-             React.DOM.span({className: "function-editor-title function-editor-title-big", key: 1}, 'Function Editor'),
+             React.DOM.span({className: "function-editor-title function-editor-title-big", key: 1}, 'Bubble Mix'),
              // React.DOM.span({className: "function-editor-link", onClick: this.onClick}, '(open)')
            ]
         )

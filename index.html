@@ -1,5 +1,9 @@
 <html>
   <head>
+    <title>&#955; Bubble Pop!</title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="app.css">
+
    <!-- Bower Components -->
     <script src="bower_components/react/react-with-addons.js"></script>
     <script src="bower_components/lodash/dist/lodash.js"></script>
@@ -34,160 +38,31 @@
     <script src="astNodeType/list.js"></script>
     <script src="astNodeType/application.js"></script>
     <script src="astNodeType/functionName.js"></script>
-
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="app.css">
   </head>
   <body>
-    <title>&#955; Bubble Pop!</title>
-    <div id="top-section" style="width:75%">
-      <div id="title">
-        <h1><span class="titleBubble">&#955;</span> Bubble Pop!</h1>
-        <h2>Or, Lambda The Ultimate Bubble Wrap</h2>
-        <h3>An educational toy based on <a href="https://stevekrouse.github.io/hs.js/">&#955; Lessons</a> by <a href="http://janpaulposma.nl/">Jan Paul Posma</a> and <a href="http://stevekrouse.com/">Steve Krouse</a></h3>
-        <h4>Fondly mangled by <a href="https://chrisuehlinger.com/">Chris Uehlinger</a></h4>
-      </div>
-
-      <div id="introText">
-        <!-- <p>
-          From the time I was first introduced to Scheme as a mewling sophmore, I've always found the LISP parentheses very visually appealing. When pressed to explain why, I would say that it seemed as though the LISP forms were bubbles that could be popped, revealing the new form or value they evaluated to.
-        </p> -->
-
-        <p>
-          When I saw the app Jan Paul Posma and Steve Krouse cooked up during YCHacks '14, I realized that it was dangerously close to the image I'd had in my head
-        </p>
-        
-        <p>
-          Haskell isn't a LISP, and this language isn't Haskell (it's a subset that Jan Paul Posma and Steve Krouse cooked up during YCHacks '14), but it does
-        </p>
-
-        <p>
-          You can explore the way <code class="mapInLesson">map</code>  and <code class="foldInLesson">fold</code> (<code class="foldrInLesson">foldr</code>  and <code class="foldlInLesson">foldl</code>) are defined and computed. Feel free to <strong>re-define</strong> any of the functions used in this document in the <span class="function-editor-title" style="">Function Editor</span>.
-        </p>
-
-        <p>
-          This document implements a small, dynamically-typed, subset of Haskell that includes integers, lists, functions, pattern matching and recursion.
-        </p>
-      </div>
-      <hr>
-    </div>
-
-    <br>
-
-    <div id="function-editor"></div>
-
-    <div style="max-width:75%" id="allLessons">
-      <div id="mapLesson">
-      <div style="margin-bottom:5px"><code class="mapInLesson" style="font-size:1.8em; font-weight:bold; margin-bottom:10px">map</code></div>
-      <div>
-        <code class="mapInLesson">map</code> is a function that performs some operation on every element in a list.
-      </div>
-
-      <pre><div class="mapLessonTypeSignature"><code class="mapInLesson">map</code> :: (a -> b) -> [a] -> [b]</div><div class="mapLessonBaseCase"><code class="mapInLesson">map</code> f [] = []</div><div class="mapLessonRecursiveCase"><code class="mapInLesson">map</code> f (x:xs) = f x : <code class="mapInLesson">map</code> f xs</div></pre>
-
-      <div class="mapLessonTypeSignature" >
-        <span><code class="mapInLesson">map</code> takes 2 inputs</span>
-          <ul style="padding-left: 30px;margin-top: 5px;">
-            <li>function of type <code>(a -> b)</code></li>
-            <li>list of type <code>[a]</code></li>
-          </ul>
-          <span>and returns</span>
-          <ul style="padding-left: 30px;margin-top: 5px;">
-            <li>list of type <code>[b]</code></li>
-          </ul>
-
-      </div>
-
-      <div class="mapLessonPatternMatches" style="padding-top: 10px;">
-        <div class="mapLessonBaseCase">
-          The base-case of <code class="mapInLesson">map</code> pattern matches on <code>[]</code> and returns <code>[]</code>.
-        </div>
-       </br>
-        <div  class="mapLessonRecursiveCase">
-           The recursive-case of <code class="mapInLesson">map</code> pattern matches on the first list element <code> x </code> and returns <code>(f x) : <code class="mapInLesson">map</code> f xs</code>.
-         </div>
-      </div>
-      <div id="mapLines"></div>
-      </div>
-      <div id="foldlesson" style="margin-top: 10px">
-      <div style="margin-bottom:5px">
-        <code class="foldInLesson" style="font-size:1.8em; font-weight:bold; margin-bottom:10px">fold</code>
-      </div>
-      <div id="twoFoldDescriptions" style="margin-top:10px; max-width:700px;">
-        <span> <code class="foldInLesson">fold</code> describes 2 functions that  "summarize" the elements in a list.</span>
-        <ul style="padding-left: 30px;margin-top: 5px;">
-          <li class="foldrInLessonMain" style="margin-bottom:15px"><code class="foldrInLesson">foldr</code> - "fold <span class="foldrInLesson">r</span>ight", applies <code>f</code> to <code>x</code> and the result of folding <code>f</code> over the rest (remember: <code class="foldrInLesson">foldr</code> moves to the <span class="foldrInLesson">r</span>ight as it computes with the computation on the outside)</li>
-
-          <li class="foldlInLessonMain"><code class="foldlInLesson">foldl</code> - "fold <span class="foldlInLesson">l</span>eft", evaluates <code>f x i</code> immediately and uses that as the new initial value for folding  <code>f</code> over the rest (remember: <code class="foldlInLesson">foldl</code> stays on the <span class="foldlInLesson">l</span>eft as it computes with the computation on the inside)</li>
-        </ul>
-      </div>
-
-     <!-- FOLDR -->
-      <div id="foldrLesson">
-        <div class="foldrInLessonMain" style="margin-bottom:5px; margin-top:10px;">
-          <code class="foldrInLesson" style="font-size:1.3em; font-weight:bold; margin-bottom:10px">foldr</code>
-        </div>
-        <pre><div class="foldrLessonTypeSignature"><code class="foldrInLesson">foldr</code> :: (a -> b -> b) -> b -> [a] -> b</div><div class="foldrLessonBaseCase"><code class="foldrInLesson">foldr</code> f i [] = i</div><div class="foldrLessonRecursiveCase"><code class="foldrInLesson">foldr</code> f i (x:xs) = f x (<code class="foldrInLesson">foldr</code> f i xs)</div></pre>
-
-        <div class="foldrLessonTypeSignature" >
-          <span><code class="foldrInLesson">foldr</code> takes 3 inputs</span>
-          <ul style="padding-left: 30px;margin-top: 5px;">
-            <li>function of type <code>(a -> b -> b)</code></li>
-            <li>initial value of type <code>b</code></li>
-            <li>list of type <code>[a]</code></li>
-          </ul>
-          <span>and returns</span>
-          <ul style="padding-left: 30px;margin-top: 5px;">
-            <li>accumulated value of type <code>b</code></li>
-          </ul>
+    <article>
+      <div id="top-section">
+        <div id="title">
+          <h1><span class="titleBubble">&#955;</span> Bubble Pop!</h1>
+          <h2>Or, Lambda The Ultimate Bubble Wrap</h2>
+          <h3>An educational toy based on <a href="https://stevekrouse.github.io/hs.js/">&#955; Lessons</a> by <a href="http://janpaulposma.nl/">Jan Paul Posma</a> and <a href="http://stevekrouse.com/">Steve Krouse</a></h3>
+          <h4>Fondly mangled by <a href="https://chrisuehlinger.com/">Chris Uehlinger</a></h4>
         </div>
 
-        <div class="foldrLessonPatternMatches" style="padding-top: 10px;">
-          <div class="foldrLessonBaseCase">
-            The base-case of <code class="foldrInLesson">foldr</code> pattern matches on <code>[]</code> and returns <code>i</code>.
-          </div>
-          </br>
-          <div class="foldrLessonRecursiveCase">
-            The recursive-case of <code class="foldrInLesson">foldr</code> pattern matches on the first list element <code> x </code> and returns <code>f x (<code class="foldrInLesson">foldr</code> f i xs)</code>.
-          </div>
+        <div id="introText">
+          <p>
+            Ever thought that LISP forms were kind of like little bubbles of computation, waiting to be popped to reveal their evaluated center? No? You will now! Click on the bubbles to pop them, pop them all to complete the computation! It's the satisfaction of popping bubble wrap, combined with the satisfaction of really elegant functional programming!
+          </p>
         </div>
+      </div>
+
+      <div id="allLessons">
+        <div id="mapLines"></div>
         <div id="foldrLines"></div>
+        <div id="foldlLines"></div>
       </div>
-
-      <!-- FOLDL -->
-       <div id="foldlLesson">
-         <div class="foldlInLessonMain" style="margin-bottom:5px; margin-top:10px;">
-           <code class="foldlInLesson" style="font-size:1.3em; font-weight:bold; margin-bottom:10px">foldl</code>
-         </div>
-         <pre><div class="foldlLessonTypeSignature"><code class="foldlInLesson">foldl</code> :: (a -> b -> a) -> a -> [b] -> a</div><div class="foldlLessonBaseCase"><code class="foldlInLesson">foldl</code> f i [] = i</div><div class="foldlLessonRecursiveCase"><code class="foldlInLesson">foldl</code> f i (x:xs) = <code><code class="foldlInLesson">foldl</code> f (f i x) xs</code></div></pre>
-
-         <div class="foldlLessonTypeSignature" >
-           <span><code class="foldlInLesson">foldl</code> takes 3 inputs</span>
-           <ul style="padding-left: 30px;margin-top: 5px;">
-             <li>function of type <code>(a -> b -> a)</code></li>
-             <li>initial value of type <code>a</code></li>
-             <li>list of type <code>[b]</code></li>
-           </ul>
-           <span>and returns</span>
-           <ul style="padding-left: 30px;margin-top: 5px;">
-             <li>accumulated value of type <code>a</code></li>
-           </ul>
-         </div>
-
-         <div class="foldlLessonPatternMatches" style="padding-top: 10px;">
-           <div class="foldlLessonBaseCase">
-             The base-case of <code class="foldlInLesson">foldl</code> pattern matches on <code>[]</code> and returns <code>i</code>.
-           </div>
-           </br>
-           <div class="foldlLessonRecursiveCase">
-             The recursive-case of <code class="foldlInLesson">foldl</code> pattern matches on the first list element <code> x </code> and returns <code><code class="foldlInLesson">foldl</code> f (f i x) xs</code>.
-           </div>
-         </div>
-         <div id="foldlLines"></div>
-       </div>
-      </div>
-    </div>
+      <div id="function-editor"></div>
+    </article>
   </body>
   <script>
     var toggleLessonHighlight = function(e) {
@@ -229,18 +104,5 @@
       FunctionEditor({defaultFunctionDefinitions: window.initialFunctionDefinitions}),
       document.getElementById('function-editor')
     );
-  </script>
-
-
-
-  <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-53516624-1', 'auto');
-  ga('send', 'pageview');
-
   </script>
 </html>

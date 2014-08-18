@@ -5,7 +5,6 @@ var LineContext = React.createClass({displayName: 'LineContext',
   }
 });
 
-
 var Line = React.createClass({displayName: 'Line',
   getInitialState: function() {
     return {editingError: false, textLength: null};
@@ -53,20 +52,26 @@ var Line = React.createClass({displayName: 'Line',
     var className = "line";
     var lineContext, lineEditButton, lineClearButton;
     if (this.props.lineState.highlightedLineIndex == this.props.lineState.index) {
-      className += " line-highlight";
       lineContext = LineContext({lineState: this.props.lineState, key: 2});
     }
     if (this.props.lineState.index === 0 && !this.props.lineState.editing) {
-      lineEditButton = React.DOM.span({
+      lineEditButton = React.DOM.div({
         className: 'lines-edit',
         onClick: this.props.lineState.program.editFirstLine,
-        key: 3
-      }, '(edit)');
-      lineClearButton = React.DOM.span({
+        key: 0
+      }, 'edit');
+
+      lineClearButton = React.DOM.div({
         className: 'lines-edit',
         onClick: this.props.lineState.program.resetProgram,
-        key: 4
-      }, '(reset)');
+        key: 1
+      }, 'reset');
+
+      lineMuteButton = React.DOM.div({
+        className: 'lines-edit',
+        onClick: this.props.lineState.program.toggleMute,
+        key: 2
+      }, this.props.lineState.program.state.isMuted ? 'unmute' : 'mute');
     }
 
     var errorDiv;
@@ -86,8 +91,7 @@ var Line = React.createClass({displayName: 'Line',
           onClick: function(event){event.stopPropagation();},
           onChange: this.onTextChange,
           onKeyDown: this.onKeyDown,
-          className: (this.state.editingError ? 'input-error' : ''),
-          style: {width: Math.max(100, (this.state.textLength || this.listText().length)*10)},
+          className: 'line-edit-input' + (this.state.editingError ? ' input-error' : ''),
           key: 0
         }),
         errorDiv
@@ -99,15 +103,25 @@ var Line = React.createClass({displayName: 'Line',
         onMouseEnter: this.highlight,
         onMouseLeave: this.unhighlight
       },
-        React.DOM.div({className: 'line-inner'},
-          [ React.addons.CSSTransitionGroup({transitionName: 'bubble-animation', key: 'bubble-animation'},
-            Node({lineState: this.props.lineState, id: this.props.lineState.ast.id, key: 1})),
-            lineContext,
-            lineEditButton,
-            lineClearButton
-          ]
-        )
-      );
+      [
+        React.DOM.div({
+          className:'lines-edit-options',
+          key:0
+        },
+        [
+          lineEditButton,
+          lineClearButton,
+          lineMuteButton
+        ]),
+        React.DOM.div({
+          className: 'line-inner',
+          key:1
+        },
+        [ React.addons.CSSTransitionGroup({transitionName: 'bubble-animation', key: 'bubble-animation'},
+          Node({lineState: this.props.lineState, id: this.props.lineState.ast.id, key: 1})),
+          lineContext
+        ])
+      ]);
     }
   }
 });

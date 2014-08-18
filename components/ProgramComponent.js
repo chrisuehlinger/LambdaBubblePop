@@ -5,7 +5,8 @@ var HaskellJSProgram = React.createClass({displayName: 'HaskellJSProgram',
       applicationHighlightId: null,
       highlightedLineIndex: null,
       editingFirstLine: false,
-      showHelpText: true
+      showHelpText: true,
+      isMuted: false
     };
   },
 
@@ -34,20 +35,33 @@ var HaskellJSProgram = React.createClass({displayName: 'HaskellJSProgram',
   },
 
   editFirstLine: function() {
-    //this.clearProgram();
     this.setState({editingFirstLine: true});
   },
-
-  resetProgram: function() {
+  resetProgram: function(){
     this.setState(this.getInitialState());
   },
+  toggleMute: function(){
+    this.setState({isMuted:!this.state.isMuted});
+  },
+  /*clearProgram: function() {
+    this.setState({
+      lines: [this.state.lines[0]],
+      applicationHighlightId: null,
+      highlightedLineIndex: null,
+      editingFirstLine: false,
+      showHelpText: false
+    });
+  },*/
 
   updateInitialAST: function(id, subtree) {
     var newAST = ASTTransformations.replaceSubtree(this.state.lines[0].ast, id, subtree);
 
-    this.clearProgram();
     this.setState({
       lines: [{ast: newAST, clickedComputationId: null}],
+      applicationHighlightId: null,
+      highlightedLineIndex: null,
+      editingFirstLine: false,
+      showHelpText: false
     });
   },
 

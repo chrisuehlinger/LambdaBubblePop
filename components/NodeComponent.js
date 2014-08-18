@@ -16,12 +16,12 @@ var Node = React.createClass({displayName: 'Node',
     }
   },
   render: function() {
-    var className = '';
+    var className = 'node';
     if (this.props.lineState.highlightedLineIndex !== null &&
         this.props.lineState.highlightedLineIndex+1 == this.props.lineState.index &&
         this.currentAST().id === this.props.lineState.justComputedId) {
       className += ' node-highlight-just-computed';
     }
-    return React.DOM.span({className: className}, this.innerNode());
+    return React.addons.CSSTransitionGroup({transitionName: 'bubble-animation', key: 'bubble-animation'},React.DOM.span({className: className, key:this.currentAST().id},  this.innerNode()));
   }
 });
