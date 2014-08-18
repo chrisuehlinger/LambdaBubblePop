@@ -18,10 +18,21 @@ functionDefinition
     typeSignature: typeSignature,
     patterns: patterns,
     isValidApplication: function(functionArguments) { return functionArguments.length === patterns[0].numberOfArguments;
-  }}; }
+}}; }
 
 functionDefinitionTypeSignature
   = whitespace "::" whitespace typesig:[ \(\)\[\]A-Za-z>-]+ { return typesig.join(""); }
+
+typeSignatureTypeList
+  = type:typeSignatureType nextType:arrow_typeSignatureType? {return [type].concat(nextType);}
+
+arrow_typeSignatureType
+  = whitespace "->" whitespace type:typeSignatureType nextType:arrow_typeSignatureType {return [type].concat(nextType);}
+
+typeSignatureType
+  = "[" type:[A-Za-z]+ "]" {return {typeConstructor:"List", type:type.join("")};}
+  / "(" application:typeSignatureTypeList ")" { return {typeConstructor:"App", type:application};}
+  / type:[A-Za-z]+  {return {typeConstructor:undefined, type:type.join("")};}
 
 functionDefinitionPatternLine
   = whitespace_newline functionName part:functionDefinitionPatternPartOfLine { return part; }

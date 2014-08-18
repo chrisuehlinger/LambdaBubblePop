@@ -75,18 +75,6 @@
       };
     };
 
-    names = ['mapLessonRecursiveCase', 'mapLessonBaseCase', 'mapLessonTypeSignature', 'foldrLessonTypeSignature', 'foldrLessonBaseCase','foldrLessonRecursiveCase', 'foldlLessonTypeSignature', 'foldlLessonBaseCase', 'foldlLessonRecursiveCase', 'foldrInLessonMain', 'foldlInLessonMain']
-    for (var j = 0; j < names.length; j++) {
-      var name = names[j];
-
-      var things = document.getElementsByClassName(name);
-      for (var i = 0; i < things.length; i ++){
-        thing = things[i];
-        thing.addEventListener('mouseenter', toggleLessonHighlight);
-        thing.addEventListener('mouseleave', toggleLessonHighlight);
-      }
-    }
-
     React.renderComponent(
       HaskellJSProgram({defaultValue: 'map addOne [1,2,3,4,5]'}),
       document.getElementById('mapLines')

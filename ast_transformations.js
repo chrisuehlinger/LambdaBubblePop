@@ -1,9 +1,13 @@
 window.functions = {};
 window.astNodeTypes = {};
 
+var _getTypeSignature = function(typeSig){
+  
+};
+
 var _isValidApplication = function(functionName, arguments) {  // TODO REMOVE THIS METHOD
-  if (window.functions[functionName] != undefined){
-    return window.functions[functionName].isValidApplication(arguments);
+  if (window.functions[functionName] && window.functions[functionName].isValidApplication(arguments)){
+    return true;
   } else {
     return false;
   }
