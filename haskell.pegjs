@@ -1,5 +1,11 @@
-
 {
+  function isGeneric(myType){
+    for(var type in window.functions)
+      if(window.functions.hasOwnProperty(type) && window.functions[type].typeSignature === myType)
+        return false;
+
+    return true;
+  };
   function randomId() { return (window.uuid ? uuid.v4() : 'placeholder'); }
 }
 
@@ -18,7 +24,38 @@ functionDefinition
     englishName: functionName.name,
     typeSignature: typeSignature,
     patterns: patterns,
-    isValidApplication: function(functionArguments) { return functionArguments.length === patterns[0].numberOfArguments;
+    isValidApplication: function(args) { 
+      if(args.length !== typeSignature.length-1)
+        return false;
+
+      console.log(name);
+      console.log(args);
+      console.log(typeSignature);
+     
+      for(var i = 0; i < typeSignature.length-1; i++) {
+        var thisType = typeSignature[i];
+        var thisArg = args[i];
+        var argType;
+
+        if(thisArg.type === "application") {
+          argType = window.functions[thisArg.functionName.name].typeSignature.slice(-1);
+        }else{
+          argType = window.astNodeTypes[thisArg.type].typeSignature || thisArg.type;
+        }
+
+        if(thisType.typeConstructor === null) {
+          if(thisType.type !== argType && !isGeneric(thisType.type))
+            return false;
+        } else if(thisType.typeConstructor === "List") {
+          if(argType !== "[a]")
+            return false;
+        } else if(thisType.typeConstructor === "App") {
+          if(argType !== "functionName")
+            return false;
+        }
+      }
+
+      return true;
 }}; }
 
 functionDefinitionTypeSignature
