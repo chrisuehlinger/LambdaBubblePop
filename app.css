@@ -9,8 +9,9 @@ body {
 }
 
 #title {
-  max-width: 700px;
+  max-width: 750px;
   margin: 0 auto;
+  text-align: center;
 }
 
 #title h1 {
@@ -56,6 +57,7 @@ body {
 }
 
 #introText p {
+  text-align:justify;
   margin-bottom:15px; 
   font-size:20px;
 }

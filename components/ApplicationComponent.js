@@ -1,4 +1,16 @@
+var poppingSounds;
 
+// the iPhone specifically seems to have problems playing these sounds
+if(navigator.userAgent.match(/iPhone/i))
+  poppingSounds = ['pop.wav', 
+                      'pop1.wav', 
+                      'pop2.wav' ].map(function(path){return 'audio/' + path;});
+else
+  poppingSounds = [ 'classic cartoon pop sound 2.wav', 
+                        'object1-1-6.wav', 
+                        'pop.wav', 
+                        'pop1.wav', 
+                        'pop2.wav' ].map(function(path){return 'audio/' + path;});
 
 var Application = React.createClass({displayName: 'Application',
   mixins: [NodeMixins],
@@ -12,11 +24,6 @@ var Application = React.createClass({displayName: 'Application',
       event.stopPropagation();
 
       if(!this.props.lineState.program.state.isMuted){
-        var poppingSounds = [ 'classic cartoon pop sound 2.wav', 
-                              'object1-1-6.wav', 
-                              'pop.wav', 
-                              'pop1.wav', 
-                              'pop2.wav' ].map(function(path){return 'audio/' + path;});
         var fileThisTime = poppingSounds[Math.floor(Math.random() * poppingSounds.length)];
         var soundThisTime = new Audio(fileThisTime);
         console.log(fileThisTime);
