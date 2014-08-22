@@ -1,10 +1,4 @@
-var Application = React.createClass({displayName: 'Application',
-  mixins: [NodeMixins],
-  isApplicable: function() {
-    return this.props.lineState.index === this.props.lineState.lastIndex &&
-           ASTTransformations.isApplicable(this.currentAST());
-  },
-  apply: _.throttle(function(event) {
+var _apply = _.throttle(function(event) {
     if (this.isApplicable()) {
       this.props.lineState.program.addLineByApplying(this.currentAST().id);
       event.stopPropagation();
@@ -22,7 +16,15 @@ var Application = React.createClass({displayName: 'Application',
       }
       
     }
-  },500),
+  },500);
+
+var Application = React.createClass({displayName: 'Application',
+  mixins: [NodeMixins],
+  isApplicable: function() {
+    return this.props.lineState.index === this.props.lineState.lastIndex &&
+           ASTTransformations.isApplicable(this.currentAST());
+  },
+  apply: _apply.bind(this),
   highlight: function(e) {
     e.stopPropagation();
     if (this.isApplicable() && this.currentAST().id !== this.props.lineState.applicationHighlightId) {
