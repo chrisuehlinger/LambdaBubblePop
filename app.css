@@ -12,6 +12,7 @@ body {
   max-width: 750px;
   margin: 0 auto;
   text-align: center;
+  font-weight:600;
 }
 
 #title h1 {
