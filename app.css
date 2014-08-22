@@ -24,7 +24,8 @@ body {
 }
 
 .titleBubble {
-
+  -webkit-border-radius:20em;
+  -moz-border-radius:20em;
   border-radius:20em;
   padding: 0 20px;
 
@@ -139,11 +140,15 @@ pre {
 }
 
 .lines-edit-options .lines-edit:first-child{
-  border-radius: 0 0 0 10px;
+  -webkit-border-bottom-left-radius: 10px;
+  -moz-border-radius-bottomleft: 10px;
+  border-bottom-left-radius: 10px;
 }
 
 .lines-edit-options .lines-edit:last-child {
-  border-radius: 0 0 10px 0;
+  -webkit-border-bottom-right-radius: 10px;
+  -moz-border-radius-bottomright: 10px;
+  border-bottom-right-radius: 10px;
   border-right: 1px solid;
 }
 
@@ -169,6 +174,7 @@ pre {
   background: #fee;
 }
 .line-inner {
+  margin-top:20px;
   -webkit-transform: translate3D(0,0,0);
 }
 .line-context {
@@ -185,10 +191,13 @@ pre {
 .application {
 
   border: 1px solid white;
-  border-radius: 20em;
   padding: 5px;
   display: inline-block;
   width:auto;
+
+  -webkit-border-radius: 20em;
+  -moz-border-radius: 20em;
+  border-radius: 20em;
   
   background: #95c2fd;
   background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.15, #bee2ff), color-stop(1, #95c2fd));
@@ -263,10 +272,13 @@ pre {
 .line-editing-container {
   width: 50%;
   border: 1px solid;
-  border-radius: 10px;
   padding: 5px;
   margin: 30px auto 0;
   vertical-align: middle;
+
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
 }
 
 .line-edit-input {
@@ -317,8 +329,11 @@ input.input-error {
 .function-editor-container {
   padding: 10px 20px 20px;
   border: 2px solid pink;
-  border-radius: 40px;
   background: pink;
+
+  -webkit-border-radius: 40px;
+  -moz-border-radius: 40px;
+  border-radius: 40px;
 }
 
 .function-editor-link {
