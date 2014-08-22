@@ -4,7 +4,7 @@ var Application = React.createClass({displayName: 'Application',
     return this.props.lineState.index === this.props.lineState.lastIndex &&
            ASTTransformations.isApplicable(this.currentAST());
   },
-  apply: function(event) {
+  apply: _.throttle(function(event) {
     if (this.isApplicable()) {
       this.props.lineState.program.addLineByApplying(this.currentAST().id);
       event.stopPropagation();
@@ -22,7 +22,7 @@ var Application = React.createClass({displayName: 'Application',
       }
       
     }
-  },
+  },500),
   highlight: function(e) {
     e.stopPropagation();
     if (this.isApplicable() && this.currentAST().id !== this.props.lineState.applicationHighlightId) {
