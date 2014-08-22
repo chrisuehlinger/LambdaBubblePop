@@ -361,7 +361,8 @@ input.input-error {
 
 .function-editor {
   box-shadow: 0 0 1.5px #777;
-  font: 1em monospace;
+  font-size: 1em;
+  font-family: 'Source Code Pro', monospace;
   border: 1px solid #ccc;
   width: 100%;
   min-height:500px;
