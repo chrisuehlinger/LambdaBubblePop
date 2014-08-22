@@ -28,9 +28,7 @@ functionDefinition
       if(args.length !== typeSignature.length-1)
         return false;
 
-      console.log(name);
-      console.log(args);
-      console.log(typeSignature);
+
      
       for(var i = 0; i < typeSignature.length-1; i++) {
         var thisType = typeSignature[i];
