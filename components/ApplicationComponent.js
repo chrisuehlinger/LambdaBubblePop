@@ -15,7 +15,9 @@ var Application = React.createClass({displayName: 'Application',
                               'pop.wav', 
                               'pop1.wav', 
                               'pop2.wav' ].map(function(path){return 'audio/' + path;});
-        var soundThisTime = new Audio(poppingSounds[Math.floor(Math.random() * poppingSounds.length)]);
+        var fileThisTime = poppingSounds[Math.floor(Math.random() * poppingSounds.length)];
+        var soundThisTime = new Audio(fileThisTime);
+        console.log(filtThisTime);
         soundThisTime.play();
       }
       
