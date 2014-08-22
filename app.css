@@ -9,7 +9,7 @@ body {
 }
 
 #title {
-  max-width: 750px;
+  max-width: 700px;
   margin: 0 auto;
   text-align: center;
 
@@ -27,6 +27,7 @@ body {
   -webkit-border-radius:20em;
   -moz-border-radius:20em;
   border-radius:20em;
+
   padding: 0 20px;
 
   background: #95c2fd;
@@ -54,13 +55,13 @@ body {
   margin-bottom:0;
 }
 
-#introText {
+.introText {
   max-width: 700px;
   margin: 0 auto;
   margin-top: 20px;
 }
 
-#introText p {
+.introText p {
   text-align:justify;
   margin-bottom:15px; 
   font-size:20px;
@@ -329,6 +330,7 @@ input.input-error {
 .function-editor-container {
   padding: 10px 20px 20px;
   border: 2px solid pink;
+  margin-bottom: 20px;
   background: pink;
 
   -webkit-border-radius: 40px;
