@@ -1,7 +1,8 @@
 @import url(http://fonts.googleapis.com/css?family=Audiowide);
+@import url(http://fonts.googleapis.com/css?family=Source+Code+Pro);
 
 body {
-  font-family: 'Optima', 'Arial', 'Helvetica', 'sans-serif';
+  font-family: 'Gill Sans', 'Helvetica', 'Arial', 'sans-serif';
   background: white;
   margin: 0;
   width: 100%;
@@ -39,8 +40,7 @@ body {
 }
 
 #title h2 {
-  font-size:1.7em; 
-  color: gray;
+  font-size:1.7em;
   margin-top:0;
   margin-bottom:0;
 }
@@ -98,7 +98,7 @@ pre {
 }
 
 .lines {
-  font-family: monospace;
+  font-family: 'Source Code Pro', monospace;
   font-size:20px;
   padding-bottom: 1em;
   margin: 1em 0;
@@ -178,6 +178,7 @@ pre {
 }
 
 .application {
+
   border: 1px solid white;
   border-radius: 20em;
   padding: 5px;
